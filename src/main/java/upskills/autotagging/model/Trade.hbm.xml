@@ -43,6 +43,10 @@
     	<![CDATA[from Trade where NB = :NB and field = :field]]>
     </query>
     
+     <query name="getTradeByNb">
+    	<![CDATA[from Trade where NB = :NB]]>
+     </query>
+    
      <query name="deleteTradeByKey">
     	<![CDATA[delete from Trade where NB = :NB and field = :field]]>
     </query>
