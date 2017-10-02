@@ -1,5 +1,7 @@
 package upskills.autotagging.dao.impl;
 
+import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -22,6 +24,26 @@ public class HbnTradeDao extends AbstractHbnDao<Trade> implements TradeDao {
 					 .setParameter("NB", tradeId.getNb())
 					 .setParameter("field", tradeId.getField().trim())
 					 .uniqueResult();		
+		} catch(Exception e) {
+			e.printStackTrace();
+		}	
+		finally {
+			session.close();
+		}
+		return result;	
+	}
+	
+	public List<Trade> getTradeByNb(int nb) {
+		List<Trade> result = null;
+		Session session = getSession();
+		Transaction tx = null;	
+		
+		try {
+			tx = session.beginTransaction();			
+			result = (List)session
+					 .getNamedQuery("getTradeByNb")
+					 .setParameter("NB", nb)					
+					 .list();		
 		} catch(Exception e) {
 			e.printStackTrace();
 		}	
