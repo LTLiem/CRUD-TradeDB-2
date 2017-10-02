@@ -5,8 +5,8 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
-import upskills.autotagging.dao.impl.HbnIssueDao;
-import upskills.autotagging.model.Issue;
+import upskills.autotagging.dao.impl.*;
+import upskills.autotagging.model.*;
 
 public class test {
 
@@ -20,14 +20,15 @@ public class test {
 		
 		
 		Issue issue = new Issue();
-		issue.setFieldValues("test add new issue 18");
+		issue.setFieldValues("test add new issue 999");
 	
-		//System.out.println(sessionFactory.getCurrentSession());
-		System.out.println(ses.isConnected());
-		System.out.println(ses.isOpen());
-		
+		System.out.println(sessionFactory.getCurrentSession().toString());
+		System.out.println("Is connected: " + ses.isConnected());
+		System.out.println("Is opened: " + ses.isOpen());
+
 	try {
 			tran = ses.beginTransaction();			
+			//ses.createQuery("select ....")
 			ses.save(issue);			
 			tran.commit();
 		}
@@ -37,13 +38,17 @@ public class test {
 		finally {
 			ses.close();
 		}*/
+	
+
+		Trade trade = new Trade();
+		TradeId tradeId = new TradeId("PC", 12351);
 		
-		Issue issue = new Issue();
-		issue.setFieldValues("test add new issue");
+		HbnTradeDao hbnTradeDao = new HbnTradeDao();
 		
-		HbnIssueDao hbnIssueDao = new HbnIssueDao();
+		trade = hbnTradeDao.getTradeByNbAndField(tradeId);
 		
-		hbnIssueDao.deleteById(17);
+		System.out.println(trade.getId().getNb());
+		
 
 		System.out.println("--------------end-------------------");
 

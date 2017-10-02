@@ -1,5 +1,6 @@
 package upskills.autotagging.dao.impl;
 
+import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import upskills.autotagging.dao.TradeDao;
@@ -11,14 +12,23 @@ public class HbnTradeDao extends AbstractHbnDao<Trade> implements TradeDao {
 
 	public Trade getTradeByNbAndField(TradeId tradeId) {
 		Trade result = null;
-		result = (Trade)getSession()
-				 .getNamedQuery("getTradeByNbAndField")
-				 .setParameter(0, tradeId.getNb())
-				 //.setInteger("NB", tradeId.getNb()) //Deprecated
-				 //.setString("field", tradeId.getField().trim()) //Deprecated
-				 .setParameter(1, tradeId.getField())
-				 .uniqueResult();
-		return result;
+		Session session = getSession();
+		Transaction tx = null;	
+		
+		try {
+			tx = session.beginTransaction();			
+			result = (Trade)session
+					 .getNamedQuery("getTradeByNbAndField")
+					 .setParameter("NB", tradeId.getNb())
+					 .setParameter("field", tradeId.getField().trim())
+					 .uniqueResult();		
+		} catch(Exception e) {
+			e.printStackTrace();
+		}	
+		finally {
+			session.close();
+		}
+		return result;	
 	}
 	
 	/**
@@ -29,13 +39,15 @@ public class HbnTradeDao extends AbstractHbnDao<Trade> implements TradeDao {
 	 */
 	public Integer deleteTradeByKey(TradeId tradeId) {
 		int result = -1;
-		Transaction tx = getSession().beginTransaction(); 
+		Transaction tx = null;	
+		Session session = getSession();
 		
 		try {			
-			result = (Integer)getSession()
+			tx = session.beginTransaction();
+			result = (Integer)session
 					.getNamedQuery("deleteTradeByKey")
-					.setParameter(0, tradeId.getNb())
-					.setParameter(1, tradeId.getField().trim())
+					.setParameter("NB", tradeId.getNb())
+					.setParameter("field", tradeId.getField().trim())
 					.executeUpdate();
 			tx.commit();
 		} catch(Exception e) {
@@ -43,7 +55,7 @@ public class HbnTradeDao extends AbstractHbnDao<Trade> implements TradeDao {
 			tx.rollback();
 		}	
 		finally {
-			getSession().close();
+			session.close();
 		}
 		return result;	
 	}

@@ -16,7 +16,7 @@
     <!--<property name="use_sql_comment">true</property>-->
     <!-- ForJDBC transaction -->
     <!--<property name="hibernate.transaction.factory_class">org.hibernate.transaction.JDBCTransactionFactory</property>-->
-    
+    <property name="hibernate.current_session_context_class">thread</property>
     <!-- Mapping file -->
     <mapping resource="upskills/autotagging/model/Issue.hbm.xml"/>
     <mapping resource="upskills/autotagging/model/Trade.hbm.xml"/>
