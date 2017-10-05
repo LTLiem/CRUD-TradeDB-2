@@ -15,9 +15,9 @@ import org.hibernate.cfg.Configuration;
 public abstract class AbstractHbnDao<T extends Object> implements Dao<T> {
 	
 	// Initialize configuration from hibernate configuration
-	private Configuration cfg = new Configuration().configure("hibernate.cfg.xml");	
+	private static Configuration cfg = new Configuration().configure("hibernate.cfg.xml");	
 	// Create session depend on hibernate configuration
-	private SessionFactory sessionFactory = cfg.buildSessionFactory();
+	private static SessionFactory sessionFactory = cfg.buildSessionFactory();
 	
 	private Class<T> domainClass;
 

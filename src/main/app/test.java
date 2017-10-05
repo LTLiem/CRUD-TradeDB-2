@@ -40,14 +40,20 @@ public class test {
 		}*/
 	
 
-		Trade trade = new Trade();
-		TradeId tradeId = new TradeId("PC", 12351);
+/*		Trade trade = new Trade();
+		TradeId tradeId = new TradeId("PC", 12351);*/
 		
 		HbnTradeDao hbnTradeDao = new HbnTradeDao();
 		
-		trade = hbnTradeDao.getTradeByNbAndField(tradeId);
+/*		trade = hbnTradeDao.getTradeByNbAndField(tradeId);
 		
-		System.out.println(trade.getId().getNb());
+		System.out.println(trade.getId().getNb());*/
+		
+		List<Trade> listTrade = hbnTradeDao.getTradeByNb(12351);
+		
+		for(Trade t : listTrade) {
+			System.out.println(t.getId().getField());
+		}
 		
 
 		System.out.println("--------------end-------------------");
