@@ -43,18 +43,24 @@ public class test {
 /*		Trade trade = new Trade();
 		TradeId tradeId = new TradeId("PC", 12351);*/
 		
-		HbnTradeDao hbnTradeDao = new HbnTradeDao();
+/*		HbnTradeDao hbnTradeDao = new HbnTradeDao();
 		
-/*		trade = hbnTradeDao.getTradeByNbAndField(tradeId);
+
 		
-		System.out.println(trade.getId().getNb());*/
-		
-		List<Trade> listTrade = hbnTradeDao.getTradeByNb(12351);
+		List<Trade> listTrade = hbnTradeDao.getAll();
 		
 		for(Trade t : listTrade) {
 			System.out.println(t.getId().getField());
-		}
+		}*/
 		
+
+		HbnTrnHdrDao hbnTrnHrdDao = new HbnTrnHdrDao();		
+
+		List<TrnHdr> trnHdrs = hbnTrnHrdDao.getDataByFmly("CURR");
+		
+		for(TrnHdr t : trnHdrs) {
+			System.out.println(t.getTrnFmly() + " " + t.getTrnGrp() + " " + t.getTrnType());
+		}
 
 		System.out.println("--------------end-------------------");
 

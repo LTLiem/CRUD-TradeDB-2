@@ -20,5 +20,6 @@
     <!-- Mapping file -->
     <mapping resource="upskills/autotagging/model/Issue.hbm.xml"/>
     <mapping resource="upskills/autotagging/model/Trade.hbm.xml"/>
+    <mapping resource="upskills/autotagging/model/TrnHdr.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>
