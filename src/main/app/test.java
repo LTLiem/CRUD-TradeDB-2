@@ -56,7 +56,7 @@ public class test {
 
 		HbnTrnHdrDao hbnTrnHrdDao = new HbnTrnHdrDao();		
 
-		List<TrnHdr> trnHdrs = hbnTrnHrdDao.getDataByFmly("CURR");
+		List<TrnHdr> trnHdrs = hbnTrnHrdDao.getDataByFmly("COM");
 		
 		for(TrnHdr t : trnHdrs) {
 			System.out.println(t.getTrnFmly() + " " + t.getTrnGrp() + " " + t.getTrnType());

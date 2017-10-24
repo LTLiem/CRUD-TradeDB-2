@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `recondb` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `recondb`;
 -- MySQL dump 10.13  Distrib 5.6.24, for Win64 (x86_64)
 --
 -- Host: localhost    Database: recondb
@@ -36,7 +34,7 @@ CREATE TABLE `issue` (
   `explanation` varchar(255) DEFAULT NULL,
   `field_values` char(50) DEFAULT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -45,7 +43,7 @@ CREATE TABLE `issue` (
 
 LOCK TABLES `issue` WRITE;
 /*!40000 ALTER TABLE `issue` DISABLE KEYS */;
-INSERT INTO `issue` VALUES (1,'Core recon','EQD','OPT','OTC',' ','MX3','Behavior difference','Past cash issue xxx','PC'),(2,'Core recon','EQD','FUT','',' ','MX3','Behavior difference','MV issue zzzz','MV'),(3,'Core recon','EQD','OPT','OTC',' ','MX3','Behavior difference','PC issue zzzz','PC'),(17,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'test add new issue');
+INSERT INTO `issue` VALUES (1,'Core recon','EQD','OPT','OTC',' ','MX3','Behavior difference','Past cash issue xxx','PC'),(2,'Core recon','EQD','FUT','',' ','MX3','Behavior difference','MV issue zzzz','MV'),(3,'Core recon','EQD','OPT','OTC',' ','MX3','Behavior difference','PC issue zzzz','PC'),(44,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'test add new issue 1002');
 /*!40000 ALTER TABLE `issue` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -58,4 +56,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-09-28 19:02:07
+-- Dump completed on 2017-10-24 14:55:17
